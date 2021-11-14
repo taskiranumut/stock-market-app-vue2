@@ -4,7 +4,7 @@ export default {
   name: "SnackBar",
   data: () => ({
     snackbar: false,
-    text: "Unauthorized login!",
+    text: "Cannot access to panel without Admin registration!",
   }),
   methods: {
     ...mapMutations(["SET_IS_ACTIVE_SNACKBAR"]),
