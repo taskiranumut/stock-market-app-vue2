@@ -11,8 +11,14 @@ export default {
   },
   methods: {
     ...mapActions(["getSymbolDataFromApi"]),
-    ...mapMutations(["SET_INPUT_VALUE", "SET_CURRENT_SYMBOL_DATA"]),
+    ...mapMutations([
+      "SET_INPUT_VALUE",
+      "SET_CURRENT_SYMBOL_DATA",
+      "RESET_INPUT_VALUE",
+      "RESET_SYMBOL_DATAS",
+    ]),
     async getSymbolsPage() {
+      this.RESET_SYMBOL_DATAS();
       await this.getSymbolDataFromApi(this.daily);
       this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.dailyDataSet);
       this.$router.push({
@@ -23,6 +29,8 @@ export default {
       });
     },
     getHome() {
+      this.RESET_SYMBOL_DATAS();
+      this.RESET_INPUT_VALUE();
       this.$router.push({
         name: "Home",
       });
