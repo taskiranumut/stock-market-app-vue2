@@ -1,10 +1,44 @@
 <script>
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+
 export default {
   name: "DataSetButtons",
   data() {
     return {
       selectedButton: "daily",
     };
+  },
+  methods: {
+    ...mapActions(["getSymbolDataFromApi"]),
+    ...mapMutations(["SET_CURRENT_SYMBOL_DATA"]),
+  },
+  computed: {
+    ...mapGetters({
+      weekly: "_getWeeklyQuery",
+      monthly: "_getMonthlyQuery",
+    }),
+    ...mapState(["symbolDatas"]),
+  },
+  watch: {
+    async selectedButton() {
+      if (this.selectedButton === "daily") {
+        this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.dailyDataSet);
+      } else if (this.selectedButton === "weekly") {
+        if (this.symbolDatas.weeklyDataSet)
+          this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.weeklyDataSet);
+        else {
+          await this.getSymbolDataFromApi(this.weekly);
+          this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.weeklyDataSet);
+        }
+      } else {
+        if (this.symbolDatas.monthlyDataSet)
+          this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.monthlyDataSet);
+        else {
+          await this.getSymbolDataFromApi(this.monthly);
+          this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.monthlyDataSet);
+        }
+      }
+    },
   },
 };
 </script>
