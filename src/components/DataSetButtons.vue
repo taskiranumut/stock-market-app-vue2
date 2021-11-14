@@ -24,16 +24,16 @@ export default {
       if (this.selectedButton === "daily") {
         this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.dailyDataSet);
       } else if (this.selectedButton === "weekly") {
-        if (this.symbolDatas.weeklyDataSet)
+        if (this.symbolDatas.weeklyDataSet) {
           this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.weeklyDataSet);
-        else {
+        } else {
           await this.getSymbolDataFromApi(this.weekly);
           this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.weeklyDataSet);
         }
       } else {
-        if (this.symbolDatas.monthlyDataSet)
+        if (this.symbolDatas.monthlyDataSet) {
           this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.monthlyDataSet);
-        else {
+        } else {
           await this.getSymbolDataFromApi(this.monthly);
           this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.monthlyDataSet);
         }

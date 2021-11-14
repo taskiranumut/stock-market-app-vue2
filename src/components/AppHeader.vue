@@ -23,6 +23,7 @@ export default {
       this.RESET_SYMBOL_DATAS();
       await this.getSymbolDataFromApi(this.daily);
       this.SET_CURRENT_SYMBOL_DATA(this.symbolDatas.dailyDataSet);
+      this.postCurrentDataToLocal(this.symbolDatas.dailyDataSet);
       this.$router.push({
         name: "SymbolPage",
         params: {
@@ -45,6 +46,13 @@ export default {
       } else {
         this.SET_IS_ACTIVE_SNACKBAR(true);
       }
+    },
+    postCurrentDataToLocal(data) {
+      const currentDatas = {
+        symbolData: data,
+        symbol: this.inputValue,
+      };
+      localStorage.setItem("currentData", JSON.stringify(currentDatas));
     },
   },
   computed: {
