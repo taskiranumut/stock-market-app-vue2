@@ -15,6 +15,11 @@ const routes = [
     name: "SymbolPage",
     component: () => import("@/views/SymbolPage.vue"),
   },
+  {
+    path: "/panel",
+    name: "PanelPage",
+    component: () => import("@/views/PanelPage.vue"),
+  },
 ];
 
 const router = new VueRouter({
