@@ -16,6 +16,8 @@ export default {
       "SET_CURRENT_SYMBOL_DATA",
       "RESET_INPUT_VALUE",
       "RESET_SYMBOL_DATAS",
+      "SET_IS_ADMIN",
+      "SET_IS_ACTIVE_SNACKBAR",
     ]),
     async getSymbolsPage() {
       this.RESET_SYMBOL_DATAS();
@@ -35,8 +37,21 @@ export default {
         name: "Home",
       });
     },
+    getAdminPanel() {
+      if (this.selectedValue === "Admin") {
+        this.$router.push({
+          name: "PanelPage",
+        });
+      } else {
+        this.SET_IS_ACTIVE_SNACKBAR(true);
+      }
+    },
   },
   computed: {
+    ...mapState(["inputValue", "symbolDatas", "isAdmin"]),
+    ...mapGetters({
+      daily: "_getDailyQuery",
+    }),
     value: {
       get() {
         return this.inputValue;
@@ -45,10 +60,12 @@ export default {
         this.SET_INPUT_VALUE(value);
       },
     },
-    ...mapState(["inputValue", "symbolDatas"]),
-    ...mapGetters({
-      daily: "_getDailyQuery",
-    }),
+  },
+  watch: {
+    selectedValue() {
+      if (this.selectedValue === "Admin") this.SET_IS_ADMIN(true);
+      else this.SET_IS_ADMIN(false);
+    },
   },
 };
 </script>
@@ -78,7 +95,7 @@ export default {
         <v-col sm="3">
           <v-row>
             <v-col sm="6" class="d-flex justify-end align-center">
-              <v-btn height="48">Panel</v-btn>
+              <v-btn @click="getAdminPanel" height="48">Panel</v-btn>
             </v-col>
             <v-col sm="6">
               <v-select

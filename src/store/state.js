@@ -12,4 +12,5 @@ export default {
     monthly: "TIME_SERIES_MONTHLY",
   },
   isAdmin: false,
+  isActiveSnackBar: false,
 };

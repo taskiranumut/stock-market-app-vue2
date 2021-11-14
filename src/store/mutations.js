@@ -10,4 +10,5 @@ export default {
     state.currentSymbolData = null;
   },
   SET_IS_ADMIN: (state, status) => (state.isAdmin = status),
+  SET_IS_ACTIVE_SNACKBAR: (state, status) => (state.isActiveSnackBar = status),
 };
