@@ -11,4 +11,5 @@ export default {
     weekly: "TIME_SERIES_WEEKLY",
     monthly: "TIME_SERIES_MONTHLY",
   },
+  isAdmin: false,
 };

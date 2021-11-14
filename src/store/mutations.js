@@ -9,4 +9,5 @@ export default {
     for (const key in state.symbolDatas) state.symbolDatas[key] = null;
     state.currentSymbolData = null;
   },
+  SET_IS_ADMIN: (state, status) => (state.isAdmin = status),
 };
