@@ -11,4 +11,6 @@ export default {
   },
   SET_IS_ADMIN: (state, status) => (state.isAdmin = status),
   SET_IS_ACTIVE_SNACKBAR: (state, status) => (state.isActiveSnackBar = status),
+  SET_LOG: (state, data) => state.log.push(data),
+  FILL_LOG: (state, data) => (state.log = data),
 };

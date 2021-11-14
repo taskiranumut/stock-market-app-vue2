@@ -13,4 +13,5 @@ export default {
   },
   isAdmin: false,
   isActiveSnackBar: false,
+  log: [],
 };

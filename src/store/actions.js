@@ -28,4 +28,14 @@ export default {
       })
       .catch((e) => console.log(e));
   },
+  postLogToLocalStorage({ commit, state }, logData) {
+    commit("SET_LOG", logData);
+    localStorage.setItem("log", JSON.stringify(state.log));
+  },
+  getLogFromLocalStorage({ commit }) {
+    if (localStorage.getItem("log")) {
+      const log = JSON.parse(localStorage.getItem("log"));
+      commit("FILL_LOG", log);
+    }
+  },
 };
