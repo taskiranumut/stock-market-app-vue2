@@ -1,11 +1,17 @@
 <script>
+// import { mapGetters } from 'vuex';
+import DataSetButtons from "@/components/DataSetButtons"
+
 export default {
   name: "SymbolPage",
-  data() {
-    return {
-      selectedButton: "daily",
-    };
+  components: {
+    DataSetButtons
   },
+  // computed: {
+  //   ...mapGetters({
+  //     dailyDates: "_getDailyDataDates"
+  //   })
+  // }
 };
 </script>
 
@@ -23,17 +29,7 @@ export default {
       <v-row>
         <v-col
           ><h3>Select dataset</h3>
-          <v-btn-toggle
-            v-model="selectedButton"
-            tile
-            color="secondary"
-            group
-            class="primary-border"
-          >
-            <v-btn value="daily"> Daily </v-btn>
-            <v-btn value="weekly"> Weekly </v-btn>
-            <v-btn value="monthly"> Monthly </v-btn>
-          </v-btn-toggle>
+          <DataSetButtons />
         </v-col>
       </v-row>
 
@@ -42,6 +38,8 @@ export default {
         <v-col>
           <v-card elevation="2" :loading="false">
             <h1>d3.js graphic</h1>
+            <p><pre>
+              Datas</pre></p>
           </v-card>
         </v-col>
       </v-row>
@@ -50,8 +48,5 @@ export default {
 </template>
 
 <style scoped>
-.primary-border {
-  border: 2px solid gray;
-  border-radius: 5px;
-}
+
 </style>
