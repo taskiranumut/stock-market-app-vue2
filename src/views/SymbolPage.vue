@@ -1,17 +1,13 @@
 <script>
-// import { mapGetters } from 'vuex';
-import DataSetButtons from "@/components/DataSetButtons"
+import DataSetButtons from "@/components/DataSetButtons";
+import StockGraphic from "@/components/StockGraphic";
 
 export default {
   name: "SymbolPage",
   components: {
-    DataSetButtons
+    DataSetButtons,
+    StockGraphic,
   },
-  // computed: {
-  //   ...mapGetters({
-  //     dailyDates: "_getDailyDataDates"
-  //   })
-  // }
 };
 </script>
 
@@ -37,9 +33,7 @@ export default {
       <v-row>
         <v-col>
           <v-card elevation="2" :loading="false">
-            <h1>d3.js graphic</h1>
-            <p><pre>
-              Datas</pre></p>
+            <StockGraphic />
           </v-card>
         </v-col>
       </v-row>
@@ -47,6 +41,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
