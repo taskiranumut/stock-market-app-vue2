@@ -17,7 +17,7 @@ export default {
         <h3>Log {{ i + 1 }}</h3>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        <p class="m-0"><strong>Time: </strong> {{ logData.time }}</p>
+        <p class="m-0"><strong>Time: </strong> {{ new Date(logData.time) }}</p>
         <p class="m-0"><strong>From: </strong> {{ logData.from }}</p>
         <p class="m-0"><strong>To: </strong> {{ logData.to }}</p>
         <p class="m-0">

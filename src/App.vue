@@ -19,7 +19,7 @@ export default {
         from,
         to,
         isUnauthorized: this.isActiveSnackBar,
-        time: new Date(),
+        time: new Date().getTime(),
       };
     },
   },
